@@ -18,4 +18,68 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+    /**
+     * @Route("/video", name="video")
+     */
+    public function videoAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/video.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
+    /**
+     * @Route("/foto", name="foto")
+     */
+    public function fotoAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/foto.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
+
+    /**
+     * @Route("/uch_in_city", name="uch_in_city")
+     */
+    public function uch_in_cityAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/uch_in_city.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
+
+    /**
+     * @Route("/uch_in_cityl", name="uch_in_cityl")
+     */
+    public function uch_in_citylAction(Request $request)
+    {
+        $cityusr = $request->query->get('city');
+        return $this->render('default/uch_in_cityl.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'city' => $cityusr
+        ]);
+    }
+
+    /**
+     * @Route("/uch_map", name="uch_map")
+     */
+    public function uch_mapAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/uch_map.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
+    /**
+     * @Route("/project", name="project")
+     */
+    public function projectAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/project.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
 }

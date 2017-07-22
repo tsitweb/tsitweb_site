@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block menu_uch_map_parametr %} class="active"{% endblock %}
+
+{% block stylesheets %}
+<style type="text/css">
+        #YMapsID {
+            width: 100px;
+            height: 100px;
+        }
+        .YMaps-layer-container img{
+          max-width: none;
+        }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="{{asset('js/Heatmap.min.js')}}" type="text/javascript"> </script>
+<script src="{{asset('js/data/tsmap.js')}}" type="text/javascript"> </script>
+<script  type="text/javascript">
+    $(window).resize(function () {
+    var winBr = window.innerWidth;
+    if (winBr === 1031) {
+        location.reload();
+    }
+    $("#YMapsID").css("width",$(window).width());
+    $("#YMapsID").css("height",$(window).height());
+    });
+
+</script>
+
+<script type="text/javascript">
+    ymaps.ready(function () {
+    $("#YMapsID").css("width",$(window).width());
+    $("#YMapsID").css("height",$(window).height());
+    var myGeoObjects = [];
+    var map = new ymaps.Map('YMapsID', {
+        center: [50.909341, 103.293897],
+        controls: ['zoomControl', 'typeSelector',  'fullscreenControl'],
+        zoom: 3, type: 'yandex#hybrid'
+    }),
+
+    gradients = [{
+        0.1: 'rgba(128, 255, 0, 0.7)',
+        0.2: 'rgba(255, 255, 0, 0.8)',
+        0.7: 'rgba(234, 72, 58, 0.9)',
+        1.0: 'rgba(162, 36, 25, 1)'
+    }, {
+        0.1: 'rgba(162, 36, 25, 0.7)',
+        0.2: 'rgba(234, 72, 58, 0.8)',
+        0.7: 'rgba(255, 255, 0, 0.9)',
+        1.0: 'rgba(128, 255, 0, 1)'
+    }],
+    radiuses = [5, 10, 20, 30],
+    opacities = [0.4, 0.6, 0.8, 1],
+    dissipating=true;
+
+    ymaps.modules.require(['Heatmap'], function (Heatmap) {
+      var heatmap = new Heatmap(data, {
+          gradient: gradients[0],
+          radius: radiuses[1],
+          opacity: opacities[2]
+    });
+    heatmap.setMap(map);
+    for (var i = 0; i < data.features.length ; i++) {
+      myGeoObjects[i] = new ymaps.GeoObject({
+      geometry:data.features[i].geometry,
+      properties: {
+          clusterCaption: data.features[i].id,
+          balloonContentBody: data.features[i].id
+     }
+     });
+    }
+    var myClusterer = new ymaps.Clusterer(
+    {
+      clusterDisableClickZoom: false
+    }
+    );
+        myClusterer.add(myGeoObjects);
+        map.geoObjects.add(myClusterer);
+        });
+
+    });
+
+</script>
+{% endblock %}
+
+{% block body %}
+<div id="YMapsID"></div>
+{% endblock %}

@@ -19,32 +19,48 @@
     </head>
     <body>
     <div class="row">
-    <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-    <!—Название сайта и кнопка раскрытия меню для мобильных-->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#itts_mm">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <div class="container-fluid">
+        <div class="visible-xs">
+          <img  data-toggle="collapse" data-target="#itts_mm" src="{{asset('img/logo/logo_768.jpg')}}" alt="" class="collapsed center-block img-responsive">
+        </div>
+        <div class="visible-sm">
+          <img src="{{asset('img/logo/logo_768.jpg')}}" alt="" class=" center-block img-responsive">
+        </div>
+        <div class="visible-md">
+          <img src="{{asset('img/logo/logo_768.jpg')}}" alt="" class=" center-block img-responsive">
+        </div>
+        <div class="visible-lg">
+          <img src="{{asset('img/logo/logo_768.jpg')}}" alt="" class=" center-block img-responsive">
+        </div>
+      </div>
     </div>
-
-    <!—Само меню-->
+    <div class="row">
+    <!—Кнопка для мобильного-!>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+  	     <button type="button" data-target="#itts_mm" data-toggle="collapse" class="visible-xs btn btn-info btn-xs btn-block">
+  	     Меню
+  	     </button>
+  	 </div>
+    <!—Само меню-!>
     <div class="collapse navbar-collapse" id="itts_mm">
       <ul class="nav navbar-nav">
-        <li><a href="#">Пункт 1</a></li>
-        <li><a href="#">Пункт 2</a></li>
-        <li><a href="#">Пункт 3</a></li>
-        <li><a href="#">Пункт 4</a></li>
-        <li><a href="#">Пункт 5</a></li> 
-      </ul>    
+        <li{% block menu_main_parametr %}{% endblock %}><a href="\">Главная</a></li>
+        <li{% block menu_video_parametr %}{% endblock %}><a href="\video">Видео</a></li>
+        <li{% block menu_foto_parametr %}{% endblock %}><a href="\foto">Фото</a></li>
+        <li{% block menu_uch_in_city_parametr %}{% endblock %}><a href="\uch_in_city">Участники по городам</a></li>
+        <li{% block menu_uch_map_parametr %}{% endblock %}><a href="\uch_map">Карта участников</a></li>
+        <li{% block menu_project_parametr %}{% endblock %}><a href="\project">Проекты</a></li>
+      </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
     </nav>
     </div>
 </nav>
+
+{% block body %}
+
+{% endblock %}
 
     </body>
 </html>
