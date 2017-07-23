@@ -77,9 +77,25 @@ class DefaultController extends Controller
      */
     public function projectAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $projects = $this->getDoctrine()->getRepository('AppBundle:DB_Projects')->findAll();
+        //dump($projects);
+
         return $this->render('default/project.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'projects' => $projects
+        ]);
+    }
+    /**
+     * @Route("/project/{prj}", name="project_view")
+     */
+    public function project_viewAction($prj)
+    {
+        $project = $this->getDoctrine()->getRepository('AppBundle:DB_Projects')->find($prj);
+        //dump($project);
+
+        return $this->render('default/project_view.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'project' => $project
         ]);
     }
 }

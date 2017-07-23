@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block menu_project_parametr %} class="active"{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="container-fluid">
+    <h1 class="text-center"> Проект: {{project.name}}</h1> <br />
+    <h1 class="text-center">Руководитель проекта: {{project.author}}</h1> <br />
+    <img class="img-responsive center-block" src="{{project.img}}" alt=""> </img>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{project.state}}" aria-valuemin="0" aria-valuemax="100" style="width:{{project.state}}%"}}>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="container-fluid">
+    <h2 class="text-center"> Ресурсы необходимые для проекта {{project.name}}:</h2> <br />
+    {{ project.resurces | raw }}
+  </div>
+</div>
+<div class="row">
+  <div class="container-fluid">
+    <h2 class="text-center"> Описание проекта {{project.name}}:</h2> <br />
+    {{ project.content | raw }}
+  </div>
+</div>
+</div>
+{% endblock %}

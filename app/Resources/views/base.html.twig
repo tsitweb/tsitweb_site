@@ -9,6 +9,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-theme.min.css')}}" />
+        <style>
+        .img_full_screen
+        {
+          width: 100% !important;
+        }
+        </style>
         {% block stylesheets %}
         {% endblock %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -24,13 +30,13 @@
           <img  data-toggle="collapse" data-target="#itts_mm" src="{{asset('img/logo/logo_768.jpg')}}" alt="" class="collapsed center-block img-responsive">
         </div>
         <div class="visible-sm">
-          <img src="{{asset('img/logo/logo_768.jpg')}}" alt="" class=" center-block img-responsive">
+          <img src="{{asset('img/logo/logo_992.jpg')}}" alt="" class=" center-block img-responsive">
         </div>
         <div class="visible-md">
-          <img src="{{asset('img/logo/logo_768.jpg')}}" alt="" class=" center-block img-responsive">
+          <img src="{{asset('img/logo/logo_1200.jpg')}}" alt="" class=" center-block img-responsive">
         </div>
         <div class="visible-lg">
-          <img src="{{asset('img/logo/logo_768.jpg')}}" alt="" class=" center-block img-responsive">
+          <img src="{{asset('img/logo/logo_1200.jpg')}}" alt="" class="img_full_screen center-block img-responsive">
         </div>
       </div>
     </div>

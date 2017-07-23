@@ -4,6 +4,13 @@
 
 
 {% block stylesheets %}
+<style>
+.fix_el
+{
+  width:300px !important;
+  height: 400px !important;
+}
+</style>
 {% endblock %}
 
 {% block javascripts %}
@@ -45,7 +52,7 @@ var Search_uch_map = React.createClass({
 
         return <div>
                     <div className="input-group input-group-lg">
-                    <span className="input-group-addon">  </span>
+                    <span className="input-group-addon">  <span className="glyphicon glyphicon glyphicon-search" aria-hidden="true"></span> </span>
                     <input className="form-control" type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Поиск" />
                     </div>
 
@@ -55,7 +62,7 @@ var Search_uch_map = React.createClass({
                         (
                           function(l)
                           {
-                            return <div className="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                            return <div className="fix_el col-xs-12 col-sm-6 col-md-4 col-lg-2">
                                 <div className="thumbnail">
                                   <img src={l.img} alt=""> </img>
                                     <div className="caption">
