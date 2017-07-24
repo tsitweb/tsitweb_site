@@ -10,6 +10,11 @@
   width:300px !important;
   height: 470px !important;
 }
+div.fix_el img {
+    width: 100% !important;
+    height: 300px;
+    overflow: hidden;
+}
 </style>
 {% endblock %}
 
@@ -63,7 +68,7 @@ var Search_uch_map = React.createClass({
                           function(l)
                           {
                             return <div className="fix_el col-xs-12 col-sm-6 col-md-4 col-lg-2">
-                                <div className="thumbnail">
+                                <div className="fix_el thumbnail">
                                   <img src={l.img} alt=""> </img>
                                     <div className="caption">
                                       <h3>{l.city}</h3>
