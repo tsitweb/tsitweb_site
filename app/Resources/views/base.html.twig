@@ -18,7 +18,23 @@
         {% block stylesheets %}
         {% endblock %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="{{asset('js/hammer.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script>
+        $(document).ready(function () {
+          var swipe = new Hammer(document);
+          swipe.on("swipeleft", function () {
+            $('#itts_mm').collapse({
+              toggle: true
+             })
+          });
+          swipe.on("swiperight", function () {
+            $('#itts_mm').collapse({
+              toggle: false
+             })
+          });
+        })
+        </script>
         {% block javascripts %}
         {% endblock %}
 
@@ -36,7 +52,7 @@
           <img src="{{asset('img/logo/logo_1200.jpg')}}" alt="" class=" center-block img-responsive">
         </div>
         <div class="visible-lg">
-          <img src="{{asset('img/logo/logo_1200.jpg')}}" alt="" class="img_full_screen center-block img-responsive">
+          <img src="{{asset('img/logo/logo_2400.jpg')}}" alt="" class="img_full_screen center-block img-responsive">
         </div>
       </div>
     </div>
@@ -65,7 +81,6 @@
 </nav>
 
 {% block body %}
-
 {% endblock %}
 
     </body>
